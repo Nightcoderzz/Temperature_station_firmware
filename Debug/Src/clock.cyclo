@@ -1,0 +1,2 @@
+../Src/clock.c:29:6:peripheral_clk_init	1
+../Src/clock.c:44:6:rtc_init	3
