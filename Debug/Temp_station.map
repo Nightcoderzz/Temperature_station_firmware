@@ -58,18 +58,53 @@ Discarded input sections
  .ARM.attributes
                 0x00000000       0x1b C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740/tools/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
  .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
+ .group         0x00000000        0xc ./Src/adc.o
  .text          0x00000000        0x0 ./Src/adc.o
  .data          0x00000000        0x0 ./Src/adc.o
  .bss           0x00000000        0x0 ./Src/adc.o
- .debug_info    0x00000000       0x22 ./Src/adc.o
- .debug_abbrev  0x00000000       0x12 ./Src/adc.o
+ .text.adc_init
+                0x00000000        0xa ./Src/adc.o
+ .debug_info    0x00000000       0x83 ./Src/adc.o
+ .debug_abbrev  0x00000000       0x45 ./Src/adc.o
  .debug_aranges
-                0x00000000       0x18 ./Src/adc.o
- .debug_macro   0x00000000       0x11 ./Src/adc.o
+                0x00000000       0x20 ./Src/adc.o
+ .debug_rnglists
+                0x00000000       0x13 ./Src/adc.o
+ .debug_macro   0x00000000       0xc3 ./Src/adc.o
  .debug_macro   0x00000000      0xaae ./Src/adc.o
- .debug_line    0x00000000       0x2d ./Src/adc.o
- .debug_str     0x00000000     0x2d81 ./Src/adc.o
+ .debug_macro   0x00000000       0x2e ./Src/adc.o
+ .debug_macro   0x00000000       0x28 ./Src/adc.o
+ .debug_macro   0x00000000       0x22 ./Src/adc.o
+ .debug_macro   0x00000000       0x8e ./Src/adc.o
+ .debug_macro   0x00000000       0x51 ./Src/adc.o
+ .debug_macro   0x00000000      0x103 ./Src/adc.o
+ .debug_macro   0x00000000       0x6a ./Src/adc.o
+ .debug_macro   0x00000000      0x1df ./Src/adc.o
+ .debug_macro   0x00000000       0x1c ./Src/adc.o
+ .debug_macro   0x00000000       0x22 ./Src/adc.o
+ .debug_macro   0x00000000       0xd1 ./Src/adc.o
+ .debug_macro   0x00000000      0x4da ./Src/adc.o
+ .debug_macro   0x00000000      0x11f ./Src/adc.o
+ .debug_macro   0x00000000     0x93cf ./Src/adc.o
+ .debug_macro   0x00000000       0x6d ./Src/adc.o
+ .debug_line    0x00000000      0x4d5 ./Src/adc.o
+ .debug_str     0x00000000    0x3bfdc ./Src/adc.o
  .comment       0x00000000       0x44 ./Src/adc.o
+ .debug_frame   0x00000000       0x2c ./Src/adc.o
  .ARM.attributes
                 0x00000000       0x2c ./Src/adc.o
  .group         0x00000000        0xc ./Src/clock.o
@@ -91,19 +126,19 @@ Discarded input sections
  .text          0x00000000        0x0 ./Src/clock.o
  .data          0x00000000        0x0 ./Src/clock.o
  .bss           0x00000000        0x0 ./Src/clock.o
- .text.sys_clk_init
-                0x00000000       0x2c ./Src/clock.o
+ .text.sys_clk_to_3MHz
+                0x00000000       0x48 ./Src/clock.o
  .text.peripheral_clk_init
                 0x00000000       0x38 ./Src/clock.o
  .text.rtc_init
                 0x00000000       0xb4 ./Src/clock.o
- .debug_info    0x00000000      0x475 ./Src/clock.o
- .debug_abbrev  0x00000000       0xb7 ./Src/clock.o
+ .debug_info    0x00000000      0x481 ./Src/clock.o
+ .debug_abbrev  0x00000000       0xca ./Src/clock.o
  .debug_aranges
                 0x00000000       0x30 ./Src/clock.o
  .debug_rnglists
                 0x00000000       0x20 ./Src/clock.o
- .debug_macro   0x00000000      0x111 ./Src/clock.o
+ .debug_macro   0x00000000      0x117 ./Src/clock.o
  .debug_macro   0x00000000      0xaae ./Src/clock.o
  .debug_macro   0x00000000       0x2e ./Src/clock.o
  .debug_macro   0x00000000       0x28 ./Src/clock.o
@@ -120,8 +155,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x11f ./Src/clock.o
  .debug_macro   0x00000000     0x93cf ./Src/clock.o
  .debug_macro   0x00000000       0x6d ./Src/clock.o
- .debug_line    0x00000000      0x597 ./Src/clock.o
- .debug_str     0x00000000    0x3c2b0 ./Src/clock.o
+ .debug_line    0x00000000      0x5b2 ./Src/clock.o
+ .debug_str     0x00000000    0x3c2d9 ./Src/clock.o
  .comment       0x00000000       0x44 ./Src/clock.o
  .debug_frame   0x00000000       0x64 ./Src/clock.o
  .ARM.attributes
