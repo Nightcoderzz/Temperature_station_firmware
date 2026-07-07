@@ -59,8 +59,8 @@ all: main-build
 main-build: Temp_station.elf secondary-outputs
 
 # Tool invocations
-Temp_station.elf Temp_station.map: $(OBJS) $(USER_OBJS) C:\Users\sikor\Documents\CubeIDEWorkspace\Temperature_station\Temp_station\STM32C031C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Temp_station.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\sikor\Documents\CubeIDEWorkspace\Temperature_station\Temp_station\STM32C031C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Temp_station.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Temp_station.elf Temp_station.map: $(OBJS) $(USER_OBJS) C:\Users\sikor\Documents\CubeIDEWorkspace\Temp_station\STM32C031C6TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Temp_station.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Users\sikor\Documents\CubeIDEWorkspace\Temp_station\STM32C031C6TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Temp_station.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -25,6 +25,18 @@
 #define RTC_INIT_MODE   (1 << 7)    // Enter init mode
 #define RTC_INIT_READY  (1 << 6)    // Init mode is ready
 
+//---------------SYSCLK DEF--------------------------------
+#define THREEMHZ_SYSCLK (0b100 << 11) // 3MHz divider (divide by 16)
+
+
+
+void sys_clk_init (void){ // System clk at 3MHz
+
+	RCC->CR &= ~(0b111 << 11); // this clears any previous configuration
+	RCC->CR |=  (THREEMHZ_SYSCLK << 11);
+
+
+}
 
 void peripheral_clk_init (void){
 
