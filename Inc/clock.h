@@ -10,7 +10,7 @@
 
 void sys_clk_to_3MHz (void);
 void peripheral_clk_init (void);
-void rtc_clk_init (void);
+void rtc_init (void);
 
 
 #endif /* CLOCK_H_ */
