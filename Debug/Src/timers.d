@@ -1,4 +1,4 @@
-Src/main.o: ../Src/main.c \
+Src/timers.o: ../Src/timers.c \
  ../Drivers/CMSIS/Device/ST/STM32C0xx/Include/stm32c0xx.h \
  ../Drivers/CMSIS/Device/ST/STM32C0xx/Include/stm32c031xx.h \
  ../Drivers/CMSIS/Include/core_cm0plus.h \
@@ -7,7 +7,7 @@ Src/main.o: ../Src/main.c \
  ../Drivers/CMSIS/Include/cmsis_gcc.h \
  ../Drivers/CMSIS/Include/mpu_armv7.h \
  ../Drivers/CMSIS/Device/ST/STM32C0xx/Include/system_stm32c0xx.h \
- ../Inc/clock.h ../Inc/gpio.h
+ ../Inc/timers.h
 ../Drivers/CMSIS/Device/ST/STM32C0xx/Include/stm32c0xx.h:
 ../Drivers/CMSIS/Device/ST/STM32C0xx/Include/stm32c031xx.h:
 ../Drivers/CMSIS/Include/core_cm0plus.h:
@@ -16,5 +16,4 @@ Src/main.o: ../Src/main.c \
 ../Drivers/CMSIS/Include/cmsis_gcc.h:
 ../Drivers/CMSIS/Include/mpu_armv7.h:
 ../Drivers/CMSIS/Device/ST/STM32C0xx/Include/system_stm32c0xx.h:
-../Inc/clock.h:
-../Inc/gpio.h:
+../Inc/timers.h:
