@@ -77,14 +77,14 @@ Discarded input sections
  .data          0x00000000        0x0 ./Src/adc.o
  .bss           0x00000000        0x0 ./Src/adc.o
  .text.adc_init
-                0x00000000        0xa ./Src/adc.o
- .debug_info    0x00000000       0x83 ./Src/adc.o
- .debug_abbrev  0x00000000       0x45 ./Src/adc.o
+                0x00000000       0xac ./Src/adc.o
+ .debug_info    0x00000000      0x30c ./Src/adc.o
+ .debug_abbrev  0x00000000      0x100 ./Src/adc.o
  .debug_aranges
                 0x00000000       0x20 ./Src/adc.o
  .debug_rnglists
-                0x00000000       0x13 ./Src/adc.o
- .debug_macro   0x00000000       0xc3 ./Src/adc.o
+                0x00000000       0x14 ./Src/adc.o
+ .debug_macro   0x00000000      0x10f ./Src/adc.o
  .debug_macro   0x00000000      0xaae ./Src/adc.o
  .debug_macro   0x00000000       0x2e ./Src/adc.o
  .debug_macro   0x00000000       0x28 ./Src/adc.o
@@ -101,8 +101,8 @@ Discarded input sections
  .debug_macro   0x00000000      0x11f ./Src/adc.o
  .debug_macro   0x00000000     0x93cf ./Src/adc.o
  .debug_macro   0x00000000       0x6d ./Src/adc.o
- .debug_line    0x00000000      0x4d5 ./Src/adc.o
- .debug_str     0x00000000    0x3bfdc ./Src/adc.o
+ .debug_line    0x00000000      0x540 ./Src/adc.o
+ .debug_str     0x00000000    0x3c23f ./Src/adc.o
  .comment       0x00000000       0x44 ./Src/adc.o
  .debug_frame   0x00000000       0x2c ./Src/adc.o
  .ARM.attributes
