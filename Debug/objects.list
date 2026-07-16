@@ -6,4 +6,5 @@
 "./Src/sysmem.o"
 "./Src/system_stm32c0xx.o"
 "./Src/timers.o"
+"./Src/uart.o"
 "./Startup/startup_stm32c031c6tx.o"
