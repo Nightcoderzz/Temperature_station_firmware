@@ -9,6 +9,7 @@ C_SRCS += \
 ../Src/clock.c \
 ../Src/gpio.c \
 ../Src/main.c \
+../Src/one_wire_DS18B20.c \
 ../Src/syscalls.c \
 ../Src/sysmem.c \
 ../Src/system_stm32c0xx.c \
@@ -20,6 +21,7 @@ OBJS += \
 ./Src/clock.o \
 ./Src/gpio.o \
 ./Src/main.o \
+./Src/one_wire_DS18B20.o \
 ./Src/syscalls.o \
 ./Src/sysmem.o \
 ./Src/system_stm32c0xx.o \
@@ -31,6 +33,7 @@ C_DEPS += \
 ./Src/clock.d \
 ./Src/gpio.d \
 ./Src/main.d \
+./Src/one_wire_DS18B20.d \
 ./Src/syscalls.d \
 ./Src/sysmem.d \
 ./Src/system_stm32c0xx.d \
@@ -45,7 +48,7 @@ Src/%.o Src/%.su Src/%.cyclo: ../Src/%.c Src/subdir.mk
 clean: clean-Src
 
 clean-Src:
-	-$(RM) ./Src/adc.cyclo ./Src/adc.d ./Src/adc.o ./Src/adc.su ./Src/clock.cyclo ./Src/clock.d ./Src/clock.o ./Src/clock.su ./Src/gpio.cyclo ./Src/gpio.d ./Src/gpio.o ./Src/gpio.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/system_stm32c0xx.cyclo ./Src/system_stm32c0xx.d ./Src/system_stm32c0xx.o ./Src/system_stm32c0xx.su ./Src/timers.cyclo ./Src/timers.d ./Src/timers.o ./Src/timers.su ./Src/uart.cyclo ./Src/uart.d ./Src/uart.o ./Src/uart.su
+	-$(RM) ./Src/adc.cyclo ./Src/adc.d ./Src/adc.o ./Src/adc.su ./Src/clock.cyclo ./Src/clock.d ./Src/clock.o ./Src/clock.su ./Src/gpio.cyclo ./Src/gpio.d ./Src/gpio.o ./Src/gpio.su ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/one_wire_DS18B20.cyclo ./Src/one_wire_DS18B20.d ./Src/one_wire_DS18B20.o ./Src/one_wire_DS18B20.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su ./Src/system_stm32c0xx.cyclo ./Src/system_stm32c0xx.d ./Src/system_stm32c0xx.o ./Src/system_stm32c0xx.su ./Src/timers.cyclo ./Src/timers.d ./Src/timers.o ./Src/timers.su ./Src/uart.cyclo ./Src/uart.d ./Src/uart.o ./Src/uart.su
 
 .PHONY: clean-Src
 

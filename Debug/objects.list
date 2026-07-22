@@ -2,6 +2,7 @@
 "./Src/clock.o"
 "./Src/gpio.o"
 "./Src/main.o"
+"./Src/one_wire_DS18B20.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Src/system_stm32c0xx.o"

@@ -12,7 +12,7 @@ void gpio_init(void){
 
 	// PA2 setting for DS18B20 data
 	GPIOA->MODER &= ~(0b11 << 4); // clear any previous data
-	GPIOA->MODER |= (0b01 << 4);  // set as output
+	GPIOA->MODER |=  (0b01 << 4);  // set as output
 	GPIOA->OTYPER |= (1U << 2); // open drain configuration
 
 	// PA3 setting for Battery indicator ANALOG IN
@@ -21,18 +21,18 @@ void gpio_init(void){
 
 	// PA4 setting for LDR ANALOG IN
 	GPIOA->MODER &= ~(0b11 << 8); // clear any previous
-	GPIOA->MODER |= (0b11 << 8); // Analog pin
+	GPIOA->MODER |=  (0b11 << 8); // Analog pin
 
 	// PA5 setting for LDR SWITCH
 	GPIOA->MODER &= ~(0b11 << 10); // clear any previous
-	GPIOA->MODER |= (0b01 << 10); // output pin
+	GPIOA->MODER |=  (0b01 << 10); // output pin
 
 	// PA6 setting for DS18B20 SWITCH
 	GPIOA->MODER &= ~(0b11 << 12); // clear any previous
-	GPIOA->MODER |= (0b01 << 12); // output pin
+	GPIOA->MODER |=  (0b01 << 12); // output pin
 
 	// PA7 setting for HC-12 SWITCH
 	GPIOA->MODER &= ~(0b11 << 14); // clear any previous
-	GPIOA->MODER |= (0b01 << 14); // output pin
+	GPIOA->MODER |=  (0b01 << 14); // output pin
 
 }

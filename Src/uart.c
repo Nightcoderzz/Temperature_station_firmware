@@ -39,14 +39,9 @@ void uart_send_byte( uint8_t byte){
 
 void uart_send_string (const char *string) {
 
-	while (string[i]){
+	while (*string != '\0'){
 
-		for (uint8_t i=0; i<string; i++){
-
-			while (!(USART1->ISR & TXE));
-
-			USART1->TDR=string[i];
-
-		}
+		uart_send_byte(*string);
+		*string++;
 	}
 }

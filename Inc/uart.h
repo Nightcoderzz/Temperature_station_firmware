@@ -1,13 +1,4 @@
-/*
- * uart.h
- *
- *  Created on: 16 Jul 2026
- *      Author: sikor
- */
-
-#ifndef UART_H_
-#define UART_H_
 
 void uart_init(void);
-
-#endif /* UART_H_ */
+void uart_send_byte( uint8_t byte);
+void uart_send_string (const char *string);

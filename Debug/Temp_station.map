@@ -181,6 +181,60 @@ Discarded input sections
  .debug_macro   0x00000000      0x11f ./Src/main.o
  .debug_macro   0x00000000     0x93cf ./Src/main.o
  .debug_macro   0x00000000       0x6d ./Src/main.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .group         0x00000000        0xc ./Src/one_wire_DS18B20.o
+ .text          0x00000000        0x0 ./Src/one_wire_DS18B20.o
+ .data          0x00000000        0x0 ./Src/one_wire_DS18B20.o
+ .bss           0x00000000        0x0 ./Src/one_wire_DS18B20.o
+ .text.one_wire_reset
+                0x00000000       0x52 ./Src/one_wire_DS18B20.o
+ .text.write_bit
+                0x00000000       0x5a ./Src/one_wire_DS18B20.o
+ .text.write_byte
+                0x00000000       0x40 ./Src/one_wire_DS18B20.o
+ .debug_info    0x00000000      0x1f8 ./Src/one_wire_DS18B20.o
+ .debug_abbrev  0x00000000      0x129 ./Src/one_wire_DS18B20.o
+ .debug_aranges
+                0x00000000       0x30 ./Src/one_wire_DS18B20.o
+ .debug_rnglists
+                0x00000000       0x1f ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0xe3 ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000      0xaae ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0x2e ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0x28 ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0x22 ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0x8e ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0x51 ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000      0x103 ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0x6a ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000      0x1df ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0x1c ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0x22 ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0xd1 ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000      0x4da ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000      0x11f ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000     0x93cf ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0x6d ./Src/one_wire_DS18B20.o
+ .debug_line    0x00000000      0x58e ./Src/one_wire_DS18B20.o
+ .debug_str     0x00000000    0x3c0b9 ./Src/one_wire_DS18B20.o
+ .comment       0x00000000       0x44 ./Src/one_wire_DS18B20.o
+ .debug_frame   0x00000000       0x70 ./Src/one_wire_DS18B20.o
+ .ARM.attributes
+                0x00000000       0x2c ./Src/one_wire_DS18B20.o
  .group         0x00000000        0xc ./Src/syscalls.o
  .group         0x00000000        0xc ./Src/syscalls.o
  .group         0x00000000        0xc ./Src/syscalls.o
@@ -478,6 +532,10 @@ Discarded input sections
  .text          0x00000000        0x0 ./Src/uart.o
  .data          0x00000000        0x0 ./Src/uart.o
  .bss           0x00000000        0x0 ./Src/uart.o
+ .text.uart_send_byte
+                0x00000000       0x2c ./Src/uart.o
+ .text.uart_send_string
+                0x00000000       0x2c ./Src/uart.o
  .debug_macro   0x00000000      0xaae ./Src/uart.o
  .debug_macro   0x00000000       0x2e ./Src/uart.o
  .debug_macro   0x00000000       0x28 ./Src/uart.o
@@ -752,6 +810,7 @@ LOAD ./Src/adc.o
 LOAD ./Src/clock.o
 LOAD ./Src/gpio.o
 LOAD ./Src/main.o
+LOAD ./Src/one_wire_DS18B20.o
 LOAD ./Src/syscalls.o
 LOAD ./Src/sysmem.o
 LOAD ./Src/system_stm32c0xx.o
@@ -1009,27 +1068,27 @@ LOAD C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
 LOAD C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740/tools/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libm.a
 LOAD C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740/tools/bin/../lib/gcc/arm-none-eabi/14.3.1/thumb/v6-m/nofp\libgcc.a
 
-.debug_info     0x00000000     0x13e7
+.debug_info     0x00000000     0x145b
  .debug_info    0x00000000      0x30c ./Src/adc.o
  .debug_info    0x0000030c      0x481 ./Src/clock.o
  .debug_info    0x0000078d      0x145 ./Src/gpio.o
  .debug_info    0x000008d2       0xb8 ./Src/main.o
  .debug_info    0x0000098a      0x36c ./Src/system_stm32c0xx.o
  .debug_info    0x00000cf6      0x3a5 ./Src/timers.o
- .debug_info    0x0000109b      0x31c ./Src/uart.o
- .debug_info    0x000013b7       0x30 ./Startup/startup_stm32c031c6tx.o
+ .debug_info    0x0000109b      0x390 ./Src/uart.o
+ .debug_info    0x0000142b       0x30 ./Startup/startup_stm32c031c6tx.o
 
-.debug_abbrev   0x00000000      0x5de
+.debug_abbrev   0x00000000      0x636
  .debug_abbrev  0x00000000      0x100 ./Src/adc.o
  .debug_abbrev  0x00000100       0xca ./Src/clock.o
  .debug_abbrev  0x000001ca       0xb1 ./Src/gpio.o
  .debug_abbrev  0x0000027b       0x59 ./Src/main.o
  .debug_abbrev  0x000002d4      0x119 ./Src/system_stm32c0xx.o
  .debug_abbrev  0x000003ed      0x118 ./Src/timers.o
- .debug_abbrev  0x00000505       0xb5 ./Src/uart.o
- .debug_abbrev  0x000005ba       0x24 ./Startup/startup_stm32c031c6tx.o
+ .debug_abbrev  0x00000505      0x10d ./Src/uart.o
+ .debug_abbrev  0x00000612       0x24 ./Startup/startup_stm32c031c6tx.o
 
-.debug_aranges  0x00000000      0x130
+.debug_aranges  0x00000000      0x140
  .debug_aranges
                 0x00000000       0x20 ./Src/adc.o
  .debug_aranges
@@ -1043,12 +1102,12 @@ LOAD C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_aranges
                 0x000000b8       0x30 ./Src/timers.o
  .debug_aranges
-                0x000000e8       0x20 ./Src/uart.o
+                0x000000e8       0x30 ./Src/uart.o
  .debug_aranges
-                0x00000108       0x28 ./Startup/startup_stm32c031c6tx.o
+                0x00000118       0x28 ./Startup/startup_stm32c031c6tx.o
 
 .debug_rnglists
-                0x00000000       0xc1
+                0x00000000       0xcd
  .debug_rnglists
                 0x00000000       0x14 ./Src/adc.o
  .debug_rnglists
@@ -1062,9 +1121,9 @@ LOAD C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_rnglists
                 0x00000075       0x1f ./Src/timers.o
  .debug_rnglists
-                0x00000094       0x14 ./Src/uart.o
+                0x00000094       0x20 ./Src/uart.o
  .debug_rnglists
-                0x000000a8       0x19 ./Startup/startup_stm32c031c6tx.o
+                0x000000b4       0x19 ./Startup/startup_stm32c031c6tx.o
 
 .debug_macro    0x00000000     0xb108
  .debug_macro   0x00000000      0x109 ./Src/adc.o
@@ -1086,31 +1145,31 @@ LOAD C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
  .debug_macro   0x0000ab31       0x6d ./Src/adc.o
  .debug_macro   0x0000ab9e      0x117 ./Src/clock.o
  .debug_macro   0x0000acb5       0xc3 ./Src/gpio.o
- .debug_macro   0x0000ad78       0xf5 ./Src/main.o
- .debug_macro   0x0000ae6d       0xe1 ./Src/system_stm32c0xx.o
- .debug_macro   0x0000af4e       0xd3 ./Src/timers.o
- .debug_macro   0x0000b021       0xe7 ./Src/uart.o
+ .debug_macro   0x0000ad78       0xef ./Src/main.o
+ .debug_macro   0x0000ae67       0xe1 ./Src/system_stm32c0xx.o
+ .debug_macro   0x0000af48       0xd3 ./Src/timers.o
+ .debug_macro   0x0000b01b       0xed ./Src/uart.o
 
-.debug_line     0x00000000     0x259b
+.debug_line     0x00000000     0x25f0
  .debug_line    0x00000000      0x558 ./Src/adc.o
  .debug_line    0x00000558      0x5b2 ./Src/clock.o
  .debug_line    0x00000b0a      0x53c ./Src/gpio.o
  .debug_line    0x00001046      0x518 ./Src/main.o
  .debug_line    0x0000155e      0x54a ./Src/system_stm32c0xx.o
  .debug_line    0x00001aa8      0x562 ./Src/timers.o
- .debug_line    0x0000200a      0x514 ./Src/uart.o
- .debug_line    0x0000251e       0x7d ./Startup/startup_stm32c031c6tx.o
+ .debug_line    0x0000200a      0x569 ./Src/uart.o
+ .debug_line    0x00002573       0x7d ./Startup/startup_stm32c031c6tx.o
 
-.debug_str      0x00000000    0x3c5c4
- .debug_str     0x00000000    0x3c5c4 ./Src/adc.o
+.debug_str      0x00000000    0x3c5f2
+ .debug_str     0x00000000    0x3c5f2 ./Src/adc.o
                               0x3c223 (size before relaxing)
- .debug_str     0x0003c5c4    0x3c2d9 ./Src/clock.o
- .debug_str     0x0003c5c4    0x3c024 ./Src/gpio.o
- .debug_str     0x0003c5c4    0x3c05d ./Src/main.o
- .debug_str     0x0003c5c4    0x3c199 ./Src/system_stm32c0xx.o
- .debug_str     0x0003c5c4    0x3c159 ./Src/timers.o
- .debug_str     0x0003c5c4    0x3c161 ./Src/uart.o
- .debug_str     0x0003c5c4       0x7c ./Startup/startup_stm32c031c6tx.o
+ .debug_str     0x0003c5f2    0x3c2d9 ./Src/clock.o
+ .debug_str     0x0003c5f2    0x3c024 ./Src/gpio.o
+ .debug_str     0x0003c5f2    0x3c054 ./Src/main.o
+ .debug_str     0x0003c5f2    0x3c199 ./Src/system_stm32c0xx.o
+ .debug_str     0x0003c5f2    0x3c159 ./Src/timers.o
+ .debug_str     0x0003c5f2    0x3c1ac ./Src/uart.o
+ .debug_str     0x0003c5f2       0x7c ./Startup/startup_stm32c031c6tx.o
 
 .comment        0x00000000       0x43
  .comment       0x00000000       0x43 ./Src/adc.o
@@ -1122,15 +1181,15 @@ LOAD C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.exte
  .comment       0x00000043       0x44 ./Src/timers.o
  .comment       0x00000043       0x44 ./Src/uart.o
 
-.debug_frame    0x00000000      0x1f8
+.debug_frame    0x00000000      0x238
  .debug_frame   0x00000000       0x2c ./Src/adc.o
  .debug_frame   0x0000002c       0x64 ./Src/clock.o
  .debug_frame   0x00000090       0x2c ./Src/gpio.o
  .debug_frame   0x000000bc       0x2c ./Src/main.o
  .debug_frame   0x000000e8       0x4c ./Src/system_stm32c0xx.o
  .debug_frame   0x00000134       0x6c ./Src/timers.o
- .debug_frame   0x000001a0       0x2c ./Src/uart.o
- .debug_frame   0x000001cc       0x2c C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740/tools/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-init.o)
+ .debug_frame   0x000001a0       0x6c ./Src/uart.o
+ .debug_frame   0x0000020c       0x2c C:/ST/STM32CubeIDE_2.2.0/STM32CubeIDE/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.14.3.rel1.win32_1.0.100.202602081740/tools/bin/../lib/gcc/arm-none-eabi/14.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp\libc_nano.a(libc_a-init.o)
 
 .debug_line_str
                 0x00000000       0x60

@@ -25,7 +25,6 @@ void timer_init (void){
    TIM3->CR1 |= (1 << 0);
 }
 
-
 void delay_us (uint16_t delay_val){
 
 	TIM3->CNT = 0; // start counting from 0
