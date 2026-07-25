@@ -1,3 +1,5 @@
-../Src/one_wire_DS18B20.c:11:9:one_wire_reset	16	static
-../Src/one_wire_DS18B20.c:28:6:write_bit	16	static
-../Src/one_wire_DS18B20.c:44:6:write_byte	24	static
+../Src/one_wire_DS18B20.c:14:9:one_wire_reset	16	static
+../Src/one_wire_DS18B20.c:33:6:write_bit_1w	16	static
+../Src/one_wire_DS18B20.c:49:6:write_byte_1w	24	static
+../Src/one_wire_DS18B20.c:60:9:read_bit_1w	16	static
+../Src/one_wire_DS18B20.c:73:9:read_temp_1w	32	static
