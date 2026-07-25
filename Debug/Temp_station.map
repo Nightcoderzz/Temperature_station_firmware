@@ -200,8 +200,10 @@ Discarded input sections
  .text          0x00000000        0x0 ./Src/one_wire_DS18B20.o
  .data          0x00000000        0x0 ./Src/one_wire_DS18B20.o
  .bss           0x00000000        0x0 ./Src/one_wire_DS18B20.o
+ .text.one_wire_reset_retry
+                0x00000000       0x72 ./Src/one_wire_DS18B20.o
  .text.one_wire_reset
-                0x00000000       0x52 ./Src/one_wire_DS18B20.o
+                0x00000000       0x72 ./Src/one_wire_DS18B20.o
  .text.write_bit_1w
                 0x00000000       0x5a ./Src/one_wire_DS18B20.o
  .text.write_byte_1w
@@ -210,13 +212,13 @@ Discarded input sections
                 0x00000000       0x48 ./Src/one_wire_DS18B20.o
  .text.read_temp_1w
                 0x00000000      0x11a ./Src/one_wire_DS18B20.o
- .debug_info    0x00000000      0x314 ./Src/one_wire_DS18B20.o
- .debug_abbrev  0x00000000      0x155 ./Src/one_wire_DS18B20.o
+ .debug_info    0x00000000      0x377 ./Src/one_wire_DS18B20.o
+ .debug_abbrev  0x00000000      0x157 ./Src/one_wire_DS18B20.o
  .debug_aranges
-                0x00000000       0x40 ./Src/one_wire_DS18B20.o
+                0x00000000       0x48 ./Src/one_wire_DS18B20.o
  .debug_rnglists
-                0x00000000       0x2c ./Src/one_wire_DS18B20.o
- .debug_macro   0x00000000       0xe3 ./Src/one_wire_DS18B20.o
+                0x00000000       0x32 ./Src/one_wire_DS18B20.o
+ .debug_macro   0x00000000       0xf5 ./Src/one_wire_DS18B20.o
  .debug_macro   0x00000000      0xaae ./Src/one_wire_DS18B20.o
  .debug_macro   0x00000000       0x2e ./Src/one_wire_DS18B20.o
  .debug_macro   0x00000000       0x28 ./Src/one_wire_DS18B20.o
@@ -233,10 +235,10 @@ Discarded input sections
  .debug_macro   0x00000000      0x11f ./Src/one_wire_DS18B20.o
  .debug_macro   0x00000000     0x93cf ./Src/one_wire_DS18B20.o
  .debug_macro   0x00000000       0x6d ./Src/one_wire_DS18B20.o
- .debug_line    0x00000000      0x64b ./Src/one_wire_DS18B20.o
- .debug_str     0x00000000    0x3c125 ./Src/one_wire_DS18B20.o
+ .debug_line    0x00000000      0x6b6 ./Src/one_wire_DS18B20.o
+ .debug_str     0x00000000    0x3c175 ./Src/one_wire_DS18B20.o
  .comment       0x00000000       0x44 ./Src/one_wire_DS18B20.o
- .debug_frame   0x00000000       0xb0 ./Src/one_wire_DS18B20.o
+ .debug_frame   0x00000000       0xd0 ./Src/one_wire_DS18B20.o
  .ARM.attributes
                 0x00000000       0x2c ./Src/one_wire_DS18B20.o
  .group         0x00000000        0xc ./Src/syscalls.o
