@@ -61,12 +61,10 @@ void write_bit_1w (uint8_t bit){
 void write_byte_1w (uint8_t cmd){
 
 	for (uint8_t i=0; i<8; i++){
-
 		uint8_t bit = cmd & 1U;
 		write_bit_1w (bit);
 		cmd= cmd >> 1; // shift cmd 1 slot right
 	}
-
 }
 
 uint8_t read_bit_1w (void){
@@ -82,35 +80,41 @@ uint8_t read_bit_1w (void){
 	return read_pin;
 }
 
+uint8_t read_byte_1w (void) {
+
+  uint8_t temp=0;
+	for (uint8_t i=0; i<8; i++){
+		temp |= (read_bit_1w() << i);
+	}
+  return temp;
+}
 
 int16_t read_temp_1w (void){ // returns combined_temp as a reading.
 
- uint8_t read_scr_pad =0xBE;
+// command list
+
+ uint8_t skip_rom_cmd=0xCC;
+ uint8_t convert_temp_cmd=0x44;
+ uint8_t read_scratchpad_cmd=0xBE;
+
+
  uint8_t temp_lsb=0;
  uint8_t temp_msb=0;
+ int16_t combined_temp=0;
+
+ // flowchart datasheet p.13-14
+ one_wire_presence();
+ write_byte_1w (skip_rom_cmd);
+ write_byte_1w (convert_temp_cmd);
+ deay_us(1000); // wait for 1 second
 
  one_wire_presence();
- write_byte_1w (read_scr_pad);
+ write_byte_1w (skip_rom_cmd);
+ write_byte_1w (read_scratchpad_cmd);
 
-	for (uint8_t i =0; i<2; i++){
-
-		if (!i){
-
-			for(uint8_t k=0; k<8; k++){
-				uint8_t temp = read_bit_1w();
-				temp_lsb |= (temp << k);
-			}
-		}
-		if(i){
-			for(uint8_t k=0; k<8; k++){
-				uint8_t temp = read_bit_1w();
-				temp_msb |= (temp << k);
-
-			}
-		}
-	}
-
-int16_t combined_temp = (temp_msb << 8) | temp_lsb;
+ temp_lsb = read_byte_1w();
+ temp_msb = read_byte_1w();
+ combined_temp = (temp_msb << 8) | temp_lsb;
 
 return combined_temp;
 
