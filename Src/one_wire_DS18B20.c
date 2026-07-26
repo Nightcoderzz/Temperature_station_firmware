@@ -6,7 +6,7 @@
 #define PA2LOW				(1U << 18)  // This resets bit 18 PA2 in GPOIA->BSRR
 #define PA2HIGH				(1U << 2)	// PA2 high
 #define RST_LOW				600			// this how long master pull low at reset
-#define RST_HIGH			120			// time before sampling sensors pull low
+#define RST_HIGH			70			// time before sampling sensors pull low
 #define RESET_ATTEMPTS		3			// times that presence will be checked if problem occurs
 
 
@@ -19,14 +19,14 @@ uint8_t one_wire_reset (void){
 	GPIOA->BSRR = PA2LOW;
 	delay_us(RST_LOW); // PA2 pulls bus low for 600us
 
-	GPIOA->BSRR = PA2HIGH;
-	delay_us(RST_HIGH); // PA2 high and waits for DS18B20
+	GPIOA->BSRR = PA2HIGH; //DS18B20 waits min 15us.
+	delay_us(RST_HIGH); // PA2 high and waits for DS18B20 sample
 
 	uint8_t pin_low = !(GPIOA->IDR & (1 << 2)); // check if the sensor responds
 
 	delay_us(600); // DS18B20 wire low- presence pulse
 
-	return 1; // reset completed
+	return pin_low; // reset completed
 }
 
 uint8_t one_wire_presence(void){   // checks if presensce pulse is there
@@ -99,14 +99,14 @@ int16_t read_temp_1w (void){ // returns combined_temp as a reading.
 
 
  uint8_t temp_lsb=0;
- uint8_t temp_msb=0;
- int16_t combined_temp=0;
+ uint16_t temp_msb=0;
+ int8_t combined_temp=0;
 
  // flowchart datasheet p.13-14
  one_wire_presence();
  write_byte_1w (skip_rom_cmd);
  write_byte_1w (convert_temp_cmd);
- deay_us(1000); // wait for 1 second
+ delay_ms(750); // wait for 1 second
 
  one_wire_presence();
  write_byte_1w (skip_rom_cmd);
@@ -114,8 +114,10 @@ int16_t read_temp_1w (void){ // returns combined_temp as a reading.
 
  temp_lsb = read_byte_1w();
  temp_msb = read_byte_1w();
- combined_temp = (temp_msb << 8) | temp_lsb;
 
-return combined_temp;
+ uint16_t raw = ((uint16_t)temp_msb << 8) | temp_lsb;
+ int16_t  temperature = (int16_t)raw;
+
+return temperature;
 
 }
