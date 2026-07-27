@@ -45,3 +45,32 @@ void uart_send_string (const char *string) {
 		*string++;
 	}
 }
+
+void uart_send_temp(int16_t raw)
+{
+    char buf[6];
+    uint8_t count = 0;
+
+    if (raw < 0) {
+        uart_send_byte('-');
+        raw = -raw;
+    }
+
+    uint16_t whole = raw / 16;
+    uint16_t frac  = raw % 16;
+
+    do {
+        buf[count] = (whole % 10) + '0';
+        count++;
+        whole = whole / 10;
+    } while (whole > 0);
+
+    while (count > 0) {
+        count--;
+        uart_send_byte(buf[count]);
+    }
+
+    uart_send_byte('.');
+    uart_send_byte((frac * 10 / 16) + '0');
+    uart_send_string("\r\n");
+}

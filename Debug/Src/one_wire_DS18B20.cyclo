@@ -1,6 +1,0 @@
-../Src/one_wire_DS18B20.c:14:9:one_wire_reset_retry	3
-../Src/one_wire_DS18B20.c:34:9:one_wire_reset	3
-../Src/one_wire_DS18B20.c:60:6:write_bit_1w	2
-../Src/one_wire_DS18B20.c:76:6:write_byte_1w	2
-../Src/one_wire_DS18B20.c:87:9:read_bit_1w	1
-../Src/one_wire_DS18B20.c:101:9:read_temp_1w	6

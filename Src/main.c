@@ -4,6 +4,7 @@
 #include "gpio.h"
 #include "adc.h"
 #include "uart.h"
+#include "one_wire.h"
 
 int main () {
 
@@ -27,8 +28,11 @@ int main () {
 
 	while (1){
 
-	for(;;) {}
 
+		int16_t t = read_temp_1w();
+		uart_send_temp(t);
+
+		delay_ms(1000);
 	}
 }
 

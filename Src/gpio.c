@@ -2,6 +2,14 @@
 
 void gpio_init(void){
 
+	//gpio pins:
+			  // PA2 DS18B20
+			  // PA3 battery indicator
+			  // PA4 LDR
+			  // PA5 LDR switch
+			  // PA6 DS18B20 switch
+			  // PA7 HC-12 switch
+
 	//Initial pin states
 
 	GPIOA->BSRR = (1 << 2); // PA2 DS18B20 data -> high (release 1-Wire bus)
