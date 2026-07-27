@@ -1,6 +1,7 @@
 #include "stm32c0xx.h"
 #include "gpio.h"
 #include "timers.h"
+#include "uart.h"
 
 
 #define PA2LOW				(1U << 18)  // This resets bit 18 PA2 in GPOIA->BSRR
@@ -99,14 +100,18 @@ int16_t read_temp_1w (void){ // returns combined_temp as a reading.
 
 
  uint8_t temp_lsb=0;
- uint16_t temp_msb=0;
- int8_t combined_temp=0;
+ uint8_t temp_msb=0;
 
- // flowchart datasheet p.13-14
- one_wire_presence();
+ uint8_t check=one_wire_presence();
+ 	 if(!check){
+ 		uart_send_string ("sensor does not respond");
+ 		return 0;
+ 	 }
+
+// flowchart datasheet p.13-14
  write_byte_1w (skip_rom_cmd);
  write_byte_1w (convert_temp_cmd);
- delay_ms(750); // wait for 1 second
+ delay_ms(750); // wait for 750ms second
 
  one_wire_presence();
  write_byte_1w (skip_rom_cmd);
@@ -115,7 +120,7 @@ int16_t read_temp_1w (void){ // returns combined_temp as a reading.
  temp_lsb = read_byte_1w();
  temp_msb = read_byte_1w();
 
- uint16_t raw = ((uint16_t)temp_msb << 8) | temp_lsb;
+ uint16_t raw = ((uint16_t)temp_msb << 8) | temp_lsb;// combines lsb and msb
  int16_t  temperature = (int16_t)raw;
 
 return temperature;
