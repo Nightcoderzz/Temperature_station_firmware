@@ -2,7 +2,7 @@
 
 #define GPIOA_EN (1 << 0)
 #define USART1_EN (1 << 14)
-#define ADC_EN (1 << 20)
+
 
 // -------------RTC DEFINITIONS ----------------------
 
@@ -26,6 +26,7 @@
 #define RTC_INIT_READY  (1 << 6)    // Init mode is ready
 
 //---------------SYSCLK--------------------------------
+#define ADC_EN (1 << 20)
 #define THREEMHZ_SYSCLK (0b100 << 11) // 3MHz divider (divide by 16)
 #define HSIRDY_FLAG     (1 << 10)
 
@@ -33,9 +34,9 @@
 void sys_clk_to_3MHz (void){ // System clk at 3MHz
 
 	RCC->CR &= ~(0b111 << 11); 			// this clears any previous configuration
-	RCC->CR |=  (THREEMHZ_SYSCLK << 11);// this sets divider to 3MHz sysclk
+	RCC->CR |=  (THREEMHZ_SYSCLK);      // this sets divider to 3MHz sysclk
 	while (!(RCC->CR & HSIRDY_FLAG));
-	SystemCoreClock = 3000000U;      // update the coreclock from 12 to 3MHz
+	SystemCoreClock = 3000000U;         // update the coreclock from 12 to 3MHz
 
 }
 

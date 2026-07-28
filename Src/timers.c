@@ -38,7 +38,8 @@ void delay_us (uint16_t delay_val){
 void delay_ms (uint16_t delay_val){
 
 	for (uint16_t i =0; i< delay_val; i++) {
-		delay_us(10000);
+		delay_us(1000);
 	}
+
 
 }

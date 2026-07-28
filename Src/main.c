@@ -30,12 +30,15 @@ int main () {
 
 	while (1){
 
+		uart2_send_string("START\r\n");
 
 		int16_t t = read_temp_1w();
 		uart_send_temp(t);
 		uart2_send_temp(t);
+		uart2_send_string("Temp_station up\r\n");
 
 		delay_ms(1000);
+
 	}
 }
 
