@@ -2,6 +2,7 @@
 #include "timers.h"
 
 
+#define RCC_ADCEN		(1 << 20)	  // Enable ADC clock
 #define ADC_ASY 		(0b10 << 30)  // Asynchronous CLK, CLK HSI
 #define ADC_OVERSAMPLE  (1 << 0)
 #define ADC_OVER16		(0b011 << 2)  // Oversample by 16
@@ -9,7 +10,7 @@
 #define ADC_ADVREGEN_EN	(1U << 28)    // Enable internal ADC Voltage regulator
 #define ADC_CAL_START   (1U << 31)	  // Start calibration
 #define AUTOFF			(1 << 15)     // adc off after conversion
-#define SMP2_PRESET		(0b111 << 0)  // 160.5 cycles x 48MHZ =50us x 16 samples
+#define SMP1_PRESET		(0b111 << 0)  // 160.5 cycles x 48MHZ =50us x 16 samples
 #define ADC_RDY_FLAG	(1U << 0)	  // Clear ready ADC ENABLE flag
 #define ADC_EN			(1U << 0)	  // ADC enable
 
@@ -18,8 +19,9 @@
 void adc_init(void){
 
 
-	// clock setup- HSI kernel clock at 48MHz
+	RCC->APBENR2 |= RCC_APBENR2_ADCEN;
 
+	// clock setup- HSI kernel clock at 48MHz
 	RCC->CCIPR |= (ADC_ASY);
 
 	//CFGR2 reg configuration
@@ -41,11 +43,8 @@ void adc_init(void){
 
 	while (ADC1->CR & ADC_CAL_START);  // Wait till calibration bit will be 0
 
-	// autooff
-	ADC1->CFGR1 |= (AUTOFF);
-
 	// Select sampling time (internal cap charge time) and chanel
-	ADC1->SMPR |= (SMP2_PRESET);
+	ADC1->SMPR |= (SMP1_PRESET);
 
 	// Clear ready flag
 	ADC1->ISR |= (ADC_RDY_FLAG);
@@ -55,4 +54,6 @@ void adc_init(void){
 
 	while (!(ADC1->ISR & ADC_RDY_FLAG)); // Wait untill ADC ready flag is 0 (ADC ready)
 
+	// autooff
+	ADC1->CFGR1 |= (AUTOFF);
 }

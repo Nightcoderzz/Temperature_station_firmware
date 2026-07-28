@@ -1,9 +1,11 @@
 #include "stm32c0xx.h"
+#include "one_wire.h"
 
 void gpio_init(void){
 
 	//gpio pins:
-			  // PA2 DS18B20
+			  // PA1 DS18B20 (OW_PIN, moved off PA2)
+			  // PA2 USART2_TX -> ST-LINK VCP (set up in uart2_init)
 			  // PA3 battery indicator
 			  // PA4 LDR
 			  // PA5 LDR switch
@@ -12,16 +14,16 @@ void gpio_init(void){
 
 	//Initial pin states
 
-	GPIOA->BSRR = (1 << 2); // PA2 DS18B20 data -> high (release 1-Wire bus)
+	GPIOA->BSRR = (1U << OW_PIN); // DS18B20 data -> high (release 1-Wire bus)
 
 	GPIOA->BSRR = (1 << 21); // Pin PA5 LDR_SW reset
 	GPIOA->BSRR = (1 << 22); // Pin PA6 DS18B20_SW reset
 	GPIOA->BSRR = (1 << 23); // Pin PA7 HC-12_SW reset
 
-	// PA2 setting for DS18B20 data
-	GPIOA->MODER &= ~(0b11 << 4); // clear any previous data
-	GPIOA->MODER |=  (0b01 << 4);  // set as output
-	GPIOA->OTYPER |= (1U << 2); // open drain configuration
+	// OW_PIN setting for DS18B20 data
+	GPIOA->MODER &= ~(0b11 << (OW_PIN * 2)); // clear any previous data
+	GPIOA->MODER |=  (0b01 << (OW_PIN * 2));  // set as output
+	GPIOA->OTYPER |= (1U << OW_PIN); // open drain configuration
 
 	// PA3 setting for Battery indicator ANALOG IN
 	GPIOA->MODER &= ~(0b11 << 6); // clear any previous

@@ -23,14 +23,17 @@ int main () {
 	gpio_init();
 
 // Uart
-	uart_init();
+	uart_init();   // USART1 on PA9  -> HC-12
+	uart2_init();  // USART2 on PA2  -> ST-LINK VCP
 
+	uart2_send_string("Temp_station up\r\n");
 
 	while (1){
 
 
 		int16_t t = read_temp_1w();
 		uart_send_temp(t);
+		uart2_send_temp(t);
 
 		delay_ms(1000);
 	}

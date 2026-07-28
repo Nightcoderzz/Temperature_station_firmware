@@ -2,7 +2,7 @@
 #include "timers.h"
 
 
-#define TIM3_CLK_EN  (1 << 0)
+#define TIM3_CLK_EN  (1 << 1)
 
 
 void timer_init (void){
@@ -21,8 +21,9 @@ void timer_init (void){
    // Timer modification apply. It trigger UG that implements setting change
    TIM3->EGR = (1 << 0);
 
-   //Fire the counter up
+   //Fire the counter up ENABLE
    TIM3->CR1 |= (1 << 0);
+
 }
 
 void delay_us (uint16_t delay_val){
@@ -37,7 +38,7 @@ void delay_us (uint16_t delay_val){
 void delay_ms (uint16_t delay_val){
 
 	for (uint16_t i =0; i< delay_val; i++) {
-		delay_us(1000);
+		delay_us(10000);
 	}
 
 }

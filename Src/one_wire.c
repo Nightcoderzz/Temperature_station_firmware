@@ -2,10 +2,12 @@
 #include "gpio.h"
 #include "timers.h"
 #include "uart.h"
+#include "one_wire.h"
 
 
-#define PA2LOW				(1U << 18)  // This resets bit 18 PA2 in GPOIA->BSRR
-#define PA2HIGH				(1U << 2)	// PA2 high
+#define OW_MASK				(1U << OW_PIN)			// DS18B20 data line bit
+#define OW_LOW				(OW_MASK << 16)			// upper half of GPIOA->BSRR resets the pin
+#define OW_HIGH				(OW_MASK)				// lower half of GPIOA->BSRR sets the pin
 #define RST_LOW				600			// this how long master pull low at reset
 #define RST_HIGH			70			// time before sampling sensors pull low
 #define RESET_ATTEMPTS		3			// times that presence will be checked if problem occurs
@@ -17,13 +19,13 @@
 uint8_t one_wire_reset (void){
 
 	//Reset sequence
-	GPIOA->BSRR = PA2LOW;
-	delay_us(RST_LOW); // PA2 pulls bus low for 600us
+	GPIOA->BSRR = OW_LOW;
+	delay_us(RST_LOW); // master pulls bus low for 600us
 
-	GPIOA->BSRR = PA2HIGH; //DS18B20 waits min 15us.
-	delay_us(RST_HIGH); // PA2 high and waits for DS18B20 sample
+	GPIOA->BSRR = OW_HIGH; //DS18B20 waits min 15us.
+	delay_us(RST_HIGH); // bus released and waits for DS18B20 sample
 
-	uint8_t pin_low = !(GPIOA->IDR & (1 << 2)); // check if the sensor responds
+	uint8_t pin_low = !(GPIOA->IDR & OW_MASK); // check if the sensor responds
 
 	delay_us(600); // DS18B20 wire low- presence pulse
 
@@ -46,15 +48,15 @@ uint8_t one_wire_presence(void){   // checks if presensce pulse is there
 void write_bit_1w (uint8_t bit){
 
 	if (bit){ 					// write bit high
-		GPIOA->BSRR = PA2LOW;
+		GPIOA->BSRR = OW_LOW;
 		delay_us(6);
-		GPIOA->BSRR = PA2HIGH;
+		GPIOA->BSRR = OW_HIGH;
 		delay_us(57);
 	}
 	else {						// write bit low
-		GPIOA->BSRR = PA2LOW;
+		GPIOA->BSRR = OW_LOW;
 		delay_us(64);
-		GPIOA->BSRR = PA2HIGH;
+		GPIOA->BSRR = OW_HIGH;
 		delay_us(10);
 	}
 }
@@ -71,11 +73,11 @@ void write_byte_1w (uint8_t cmd){
 uint8_t read_bit_1w (void){
 
 	// master initiates read time slot
-	GPIOA->BSRR = PA2LOW;
+	GPIOA->BSRR = OW_LOW;
 	delay_us(6);
-	GPIOA->BSRR = PA2HIGH;
+	GPIOA->BSRR = OW_HIGH;
 	delay_us(9);
-	uint8_t read_pin = (GPIOA->IDR >> 2) & 1U;
+	uint8_t read_pin = (GPIOA->IDR & OW_MASK) ? 1U : 0U;
 	delay_us(55);
 
 	return read_pin;
