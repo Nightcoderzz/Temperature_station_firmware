@@ -1,9 +1,6 @@
-/*
- * timers.h
- *
- *  Created on: 12 Jul 2026
- *      Author: sikor
- */
+#include <stdint.h>
+#include "stm32c0xx.h"
+
 
 #ifndef TIMERS_H_
 #define TIMERS_H_

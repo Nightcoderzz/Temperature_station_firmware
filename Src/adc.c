@@ -18,7 +18,6 @@
 // timer_init() function must be called before this
 void adc_init(void){
 
-
 	RCC->APBENR2 |= RCC_APBENR2_ADCEN;
 
 	// clock setup- HSI kernel clock at 48MHz
@@ -43,7 +42,7 @@ void adc_init(void){
 
 	while (ADC1->CR & ADC_CAL_START);  // Wait till calibration bit will be 0
 
-	// Select sampling time (internal cap charge time) and chanel
+	// Select sampling time (internal cap charge time) and channel
 	ADC1->SMPR |= (SMP1_PRESET);
 
 	// Clear ready flag
@@ -52,8 +51,24 @@ void adc_init(void){
 	// Enable ADC
 	ADC1->CR |= (ADC_EN);
 
-	while (!(ADC1->ISR & ADC_RDY_FLAG)); // Wait untill ADC ready flag is 0 (ADC ready)
+	while (!(ADC1->ISR & ADC_RDY_FLAG)); // Wait until ADC ready flag is 0 (ADC ready)
 
 	// autooff
 	ADC1->CFGR1 |= (AUTOFF);
+}
+// battery level is adc_in3
+// ldr is adc_in4
+
+uint16_t adc_read( uint8_t channel){
+
+uint16_t data = 0;
+
+	ADC1->CHSELR = (1U << channel); // channel selection
+	ADC1->CR |= (1 << 2);			//	ADC start
+
+	while(!(ADC1->ISR & (1 << 2)));	// wait for conversion to finish
+
+	data = ADC1->DR;	// ADC conversion data
+
+	return data;
 }

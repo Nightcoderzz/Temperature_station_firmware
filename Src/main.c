@@ -31,11 +31,10 @@ int main () {
 while (1){
 
 
-
 	int16_t t = read_temp_1w();
 	uart_send_temp(t);
 
-	uart2_send_string("Current temperature \r\n");
+	uart2_send_string("Current temperature is ");
 
 	uart2_send_temp(t);
 

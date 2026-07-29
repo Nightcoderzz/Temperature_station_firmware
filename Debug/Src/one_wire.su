@@ -1,5 +1,5 @@
-../Inc/timers.h:13:20:delay_us	24	static
-../Inc/timers.h:19:20:delay_ms	16	static
+../Inc/timers.h:10:20:delay_us	24	static
+../Inc/timers.h:16:20:delay_ms	16	static
 ../Src/one_wire.c:17:9:one_wire_reset	16	static
 ../Src/one_wire.c:33:9:one_wire_presence	16	static
 ../Src/one_wire.c:46:6:write_bit_1w	16	static

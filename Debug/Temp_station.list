@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000028  00000000  00000000  00002004  2**0
                   CONTENTS, READONLY
- 12 .debug_info   00001e6f  00000000  00000000  0000202c  2**0
+ 12 .debug_info   00001ec0  00000000  00000000  0000202c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000008c7  00000000  00000000  00003e9b  2**0
+ 13 .debug_abbrev 000008f5  00000000  00000000  00003eec  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000001e8  00000000  00000000  00004768  2**3
+ 14 .debug_aranges 000001f0  00000000  00000000  000047e8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00000149  00000000  00000000  00004950  2**0
+ 15 .debug_rnglists 0000014f  00000000  00000000  000049d8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  0000b217  00000000  00000000  00004a99  2**0
+ 16 .debug_macro  0000b217  00000000  00000000  00004b27  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00002e86  00000000  00000000  0000fcb0  2**0
+ 17 .debug_line   00002ed0  00000000  00000000  0000fd3e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0003c7f3  00000000  00000000  00012b36  2**0
+ 18 .debug_str    0003c809  00000000  00000000  00012c0e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  0004f329  2**0
+ 19 .comment      00000043  00000000  00000000  0004f417  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  000004b0  00000000  00000000  0004f36c  2**2
+ 20 .debug_frame  000004d0  00000000  00000000  0004f45c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000060  00000000  00000000  0004f81c  2**0
+ 21 .debug_line_str 00000060  00000000  00000000  0004f92c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -281,7 +281,6 @@ void adc_init(void){
  8000260:	b580      	push	{r7, lr}
  8000262:	af00      	add	r7, sp, #0
 
-
 	RCC->APBENR2 |= RCC_APBENR2_ADCEN;
  8000264:	4b2e      	ldr	r3, [pc, #184]	@ (8000320 <adc_init+0xc0>)
  8000266:	6c1a      	ldr	r2, [r3, #64]	@ 0x40
@@ -365,7 +364,7 @@ void adc_init(void){
  80002d8:	2b00      	cmp	r3, #0
  80002da:	dbfb      	blt.n	80002d4 <adc_init+0x74>
 
-	// Select sampling time (internal cap charge time) and chanel
+	// Select sampling time (internal cap charge time) and channel
 	ADC1->SMPR |= (SMP1_PRESET);
  80002dc:	4b11      	ldr	r3, [pc, #68]	@ (8000324 <adc_init+0xc4>)
  80002de:	695a      	ldr	r2, [r3, #20]
@@ -392,7 +391,7 @@ void adc_init(void){
  80002fc:	430a      	orrs	r2, r1
  80002fe:	609a      	str	r2, [r3, #8]
 
-	while (!(ADC1->ISR & ADC_RDY_FLAG)); // Wait untill ADC ready flag is 0 (ADC ready)
+	while (!(ADC1->ISR & ADC_RDY_FLAG)); // Wait until ADC ready flag is 0 (ADC ready)
  8000300:	46c0      	nop			@ (mov r8, r8)
  8000302:	4b08      	ldr	r3, [pc, #32]	@ (8000324 <adc_init+0xc4>)
  8000304:	681b      	ldr	r3, [r3, #0]
@@ -908,7 +907,6 @@ int main () {
 while (1){
 
 
-
 	int16_t t = read_temp_1w();
  8000606:	1dbc      	adds	r4, r7, #6
  8000608:	f000 f944 	bl	8000894 <read_temp_1w>
@@ -921,7 +919,7 @@ while (1){
  8000616:	0018      	movs	r0, r3
  8000618:	f000 fb28 	bl	8000c6c <uart_send_temp>
 
-	uart2_send_string("Current temperature \r\n");
+	uart2_send_string("Current temperature is ");
  800061c:	4b09      	ldr	r3, [pc, #36]	@ (8000644 <main+0x6c>)
  800061e:	0018      	movs	r0, r3
  8000620:	f000 fb38 	bl	8000c94 <uart2_send_string>
