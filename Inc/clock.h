@@ -8,7 +8,7 @@
 #ifndef CLOCK_H_
 #define CLOCK_H_
 
-void sys_clk_to_3MHz (void);
+void sys_clk_48MHz (void);
 void peripheral_clk_init (void);
 void rtc_init (void);
 

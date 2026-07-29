@@ -6,7 +6,7 @@
 #define USART2_EN	   (1U << 17)	  // Enable usart2 clock (APBENR1)
 #define USART_EN	   (1 << 0)		  // USART enable
 #define TRANS_EN	   (1 << 3)       // Transmitter enable bit
-#define SYS_CLK		   3000000		  // 3MHz
+#define SYS_CLK		   48000000		  // 3MHz
 #define BAUD		   9600			  // Baud rate
 #define TXE		       (1 << 7)		  // TDR empty flag
 

@@ -31,13 +31,11 @@
 #define HSIRDY_FLAG     (1 << 10)
 
 
-void sys_clk_to_3MHz (void){ // System clk at 3MHz
+void sys_clk_48MHz (void){ // System clk at 3MHz
 
-	RCC->CR &= ~(0b111 << 11); 			// this clears any previous configuration
-	RCC->CR |=  (THREEMHZ_SYSCLK);      // this sets divider to 3MHz sysclk
+	RCC->CR = (RCC->CR & ~(0b111 << 11));   // HSIDIV = 0b000 = /1 -> 48 MHz
 	while (!(RCC->CR & HSIRDY_FLAG));
-	SystemCoreClock = 3000000U;         // update the coreclock from 12 to 3MHz
-
+	SystemCoreClock = 48000000U;
 }
 
 void peripheral_clk_init (void){

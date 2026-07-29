@@ -13,7 +13,7 @@ void timer_init (void){
    RCC->APBENR1 |= (TIM3_CLK_EN);
 
    //Prescaler PSC+1
-   TIM3->PSC = (0b10 << 0); // divide by 2+1=3. SYSCLK=3MHz/3=1us clock
+   TIM3->PSC = 47; // divide by 2+1=3. SYSCLK=3MHz/3=1us clock
 
    // Top count value 65535
    TIM3->ARR = 0xFFFF;
@@ -26,20 +26,5 @@ void timer_init (void){
 
 }
 
-void delay_us (uint16_t delay_val){
-
-	TIM3->CNT = 0; // start counting from 0
-	while (TIM3->CNT < delay_val);
-
-	return;
-}
 
 
-void delay_ms (uint16_t delay_val){
-
-	for (uint16_t i =0; i< delay_val; i++) {
-		delay_us(1000);
-	}
-
-
-}

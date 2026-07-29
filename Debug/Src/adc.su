@@ -1,1 +1,2 @@
+../Inc/timers.h:13:20:delay_us	24	static
 ../Src/adc.c:19:6:adc_init	8	static

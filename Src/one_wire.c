@@ -2,12 +2,10 @@
 #include "gpio.h"
 #include "timers.h"
 #include "uart.h"
-#include "one_wire.h"
 
 
-#define OW_MASK				(1U << OW_PIN)			// DS18B20 data line bit
-#define OW_LOW				(OW_MASK << 16)			// upper half of GPIOA->BSRR resets the pin
-#define OW_HIGH				(OW_MASK)				// lower half of GPIOA->BSRR sets the pin
+#define PA1LOW				(1U << 17)  // This resets bit 17 PA1 in GPOIA->BSRR
+#define PA1HIGH				(1U << 1)	// PA1 high
 #define RST_LOW				600			// this how long master pull low at reset
 #define RST_HIGH			70			// time before sampling sensors pull low
 #define RESET_ATTEMPTS		3			// times that presence will be checked if problem occurs
@@ -19,13 +17,13 @@
 uint8_t one_wire_reset (void){
 
 	//Reset sequence
-	GPIOA->BSRR = OW_LOW;
-	delay_us(RST_LOW); // master pulls bus low for 600us
+	GPIOA->BSRR = PA1LOW;
+	delay_us(RST_LOW); // PA1 pulls bus low for 600us
 
-	GPIOA->BSRR = OW_HIGH; //DS18B20 waits min 15us.
-	delay_us(RST_HIGH); // bus released and waits for DS18B20 sample
+	GPIOA->BSRR = PA1HIGH; //DS18B20 waits.
+	delay_us(RST_HIGH); // PA1 high and waits for DS18B20 sample 70us
 
-	uint8_t pin_low = !(GPIOA->IDR & OW_MASK); // check if the sensor responds
+	uint8_t pin_low = !(GPIOA->IDR & (1 << 1)); // check if the sensor responds
 
 	delay_us(600); // DS18B20 wire low- presence pulse
 
@@ -48,15 +46,15 @@ uint8_t one_wire_presence(void){   // checks if presensce pulse is there
 void write_bit_1w (uint8_t bit){
 
 	if (bit){ 					// write bit high
-		GPIOA->BSRR = OW_LOW;
+		GPIOA->BSRR = PA1LOW;
 		delay_us(6);
-		GPIOA->BSRR = OW_HIGH;
+		GPIOA->BSRR = PA1HIGH;
 		delay_us(57);
 	}
 	else {						// write bit low
-		GPIOA->BSRR = OW_LOW;
+		GPIOA->BSRR = PA1LOW;
 		delay_us(64);
-		GPIOA->BSRR = OW_HIGH;
+		GPIOA->BSRR = PA1HIGH;
 		delay_us(10);
 	}
 }
@@ -73,11 +71,11 @@ void write_byte_1w (uint8_t cmd){
 uint8_t read_bit_1w (void){
 
 	// master initiates read time slot
-	GPIOA->BSRR = OW_LOW;
+	GPIOA->BSRR = PA1LOW;
 	delay_us(6);
-	GPIOA->BSRR = OW_HIGH;
+	GPIOA->BSRR = PA1HIGH;
 	delay_us(9);
-	uint8_t read_pin = (GPIOA->IDR & OW_MASK) ? 1U : 0U;
+	uint8_t read_pin = (GPIOA->IDR >> 1) & 1U;
 	delay_us(55);
 
 	return read_pin;
@@ -106,7 +104,7 @@ int16_t read_temp_1w (void){ // returns combined_temp as a reading.
 
  uint8_t check=one_wire_presence();
  	 if(!check){
- 		uart_send_string ("sensor does not respond");
+ 		uart2_send_string ("sensor does not respond \r\n");
  		return 0;
  	 }
 

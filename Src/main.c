@@ -9,7 +9,7 @@
 int main () {
 
 //Clock
-	sys_clk_to_3MHz ();
+	sys_clk_48MHz ();
 	peripheral_clk_init ();
 	rtc_init();
 
@@ -28,17 +28,18 @@ int main () {
 
 	uart2_send_string("Temp_station up\r\n");
 
-	while (1){
+while (1){
 
-		uart2_send_string("START\r\n");
 
-		int16_t t = read_temp_1w();
-		uart_send_temp(t);
-		uart2_send_temp(t);
-		uart2_send_string("Temp_station up\r\n");
 
-		delay_ms(1000);
+	int16_t t = read_temp_1w();
+	uart_send_temp(t);
 
+	uart2_send_string("Current temperature \r\n");
+
+	uart2_send_temp(t);
+
+	delay_ms(1000);
 	}
 }
 
