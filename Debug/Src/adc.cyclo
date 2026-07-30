@@ -1,3 +1,4 @@
 ../Inc/timers.h:10:20:delay_us	2
 ../Src/adc.c:19:6:adc_init	3
-../Src/adc.c:62:10:adc_read	2
+../Src/adc.c:67:9:adc_read	2
+../Src/adc.c:81:9:batt_voltage_read	6

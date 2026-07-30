@@ -56,10 +56,15 @@ void adc_init(void){
 	// autooff
 	ADC1->CFGR1 |= (AUTOFF);
 }
+
+
+
+
+
 // battery level is adc_in3
 // ldr is adc_in4
 
-uint16_t adc_read( uint8_t channel){
+uint8_t adc_read( uint8_t channel){
 
 uint16_t data = 0;
 
@@ -71,4 +76,30 @@ uint16_t data = 0;
 	data = ADC1->DR;	// ADC conversion data
 
 	return data;
+}
+
+uint8_t batt_voltage_read (void){
+
+uint8_t battery_level=0;
+
+uint16_t adc_data = adc_read(3); // read channel 3 (PA3)
+
+	uint16_t batt_voltage = (( (uint32_t) adc_data * 3300)/4095) ;
+
+	if (batt_voltage >= 4000){
+		battery_level=5;
+	}
+	else if (batt_voltage >= 3800){
+		battery_level=4;
+	}
+	else if (batt_voltage >= 3600){
+		battery_level=3;
+	}
+	else if( batt_voltage >= 3400){
+		battery_level=2;
+	}
+	else if (batt_voltage <= 3400){
+		battery_level=1;
+	}
+	return battery_level;
 }
