@@ -84,7 +84,7 @@ uint8_t battery_level=0;
 
 uint16_t adc_data = adc_read(3); // read channel 3 (PA3)
 
-	uint16_t batt_voltage = (( (uint32_t) adc_data * 3300)/4095) ;
+	uint16_t batt_voltage = (( (uint32_t) adc_data * 3300)/4095) *2;
 
 	if (batt_voltage >= 4000){
 		battery_level=5;
@@ -102,4 +102,25 @@ uint16_t adc_data = adc_read(3); // read channel 3 (PA3)
 		battery_level=1;
 	}
 	return battery_level;
+}
+
+uint8_t ldr_read(void){
+
+	GPIOA->BSRR = (1 << 5); // switching ON PA5 to drive LDR voltage divider
+
+	delay_ms(5); // give cap time to charge
+
+uint16_t daynight = 2600; // value calculated at 40kOhms as cutoff
+
+	// assume that day is 40kOhms and below
+	uint16_t adc_data = adc_read(4); // read channel 4 (PA4)
+
+	GPIOA->BSRR = (1 << 21); // Pin 5 OFF. Light sample taken.
+
+	uint16_t pin_volt = (( (uint32_t) adc_data * 3300)/4095);
+
+	if (daynight > pin_volt )
+		return 1; // day
+	else
+		return 0; // night
 }
