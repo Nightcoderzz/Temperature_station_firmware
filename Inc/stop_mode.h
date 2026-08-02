@@ -9,5 +9,9 @@
 #define STOP_MODE_H_
 
 void rtc_init1 (void);
+void alarm_a_init (void);
+void rtc_alarm_flag (void);
+
+
 
 #endif /* STOP_MODE_H_ */

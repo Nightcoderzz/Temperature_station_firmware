@@ -31,10 +31,13 @@ int main () {
 
 // Rtc
 	 rtc_init1 ();
+	 alarm_a_init();
+
 
 while (1){
 
-
+	rtc_alarm_flag();
+	GPIOA->ODR ^= (1<<5); // toggle led
 
 	}
 }
