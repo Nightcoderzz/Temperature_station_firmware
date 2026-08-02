@@ -5,6 +5,7 @@
 #include "adc.h"
 #include "uart.h"
 #include "one_wire.h"
+#include "stop_mode.h"
 
 int main () {
 
@@ -28,17 +29,13 @@ int main () {
 
 	uart2_send_string("Temp_station up\r\n");
 
+// Rtc
+	 rtc_init1 ();
+
 while (1){
 
 
-	int16_t t = read_temp_1w();
-	uart_send_temp(t);
 
-	uart2_send_string("Current temperature is ");
-
-	uart2_send_temp(t);
-
-	delay_ms(1000);
 	}
 }
 

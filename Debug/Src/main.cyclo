@@ -1,3 +1,1 @@
-../Inc/timers.h:10:20:delay_us	2
-../Inc/timers.h:16:20:delay_ms	2
-../Src/main.c:9:5:main	1
+../Src/main.c:10:5:main	1

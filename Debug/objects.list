@@ -3,6 +3,7 @@
 "./Src/gpio.o"
 "./Src/main.o"
 "./Src/one_wire.o"
+"./Src/stop_mode.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
 "./Src/system_stm32c0xx.o"
