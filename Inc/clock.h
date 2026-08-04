@@ -10,7 +10,6 @@
 
 void sys_clk_48MHz (void);
 void peripheral_clk_init (void);
-void rtc_init (void);
 
 
 #endif /* CLOCK_H_ */

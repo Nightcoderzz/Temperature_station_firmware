@@ -5,7 +5,7 @@ Src/one_wire.o: ../Src/one_wire.c \
  ../Drivers/CMSIS/Include/cmsis_version.h \
  ../Drivers/CMSIS/Include/cmsis_compiler.h \
  ../Drivers/CMSIS/Include/cmsis_gcc.h \
- ../Drivers/CMSIS/Include/mpu_armv7.h \
+ ../Drivers/CMSIS/Include/m-profile/armv7m_mpu.h \
  ../Drivers/CMSIS/Device/ST/STM32C0xx/Include/system_stm32c0xx.h \
  ../Inc/gpio.h ../Inc/timers.h ../Inc/uart.h
 ../Drivers/CMSIS/Device/ST/STM32C0xx/Include/stm32c0xx.h:
@@ -14,7 +14,7 @@ Src/one_wire.o: ../Src/one_wire.c \
 ../Drivers/CMSIS/Include/cmsis_version.h:
 ../Drivers/CMSIS/Include/cmsis_compiler.h:
 ../Drivers/CMSIS/Include/cmsis_gcc.h:
-../Drivers/CMSIS/Include/mpu_armv7.h:
+../Drivers/CMSIS/Include/m-profile/armv7m_mpu.h:
 ../Drivers/CMSIS/Device/ST/STM32C0xx/Include/system_stm32c0xx.h:
 ../Inc/gpio.h:
 ../Inc/timers.h:

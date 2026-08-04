@@ -1,3 +1,2 @@
 ../Src/clock.c:34:6:sys_clk_48MHz	8	static
 ../Src/clock.c:41:6:peripheral_clk_init	8	static
-../Src/clock.c:56:6:rtc_init	8	static

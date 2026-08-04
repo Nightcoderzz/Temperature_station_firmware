@@ -50,40 +50,9 @@ void peripheral_clk_init (void){
 	RCC->APBENR2 |= USART1_EN; // Enable USART1
 	RCC->APBENR2 |= ADC_EN;	   // Enable ADC
 
+	RCC->APBENR1 |= RCC_APBENR1_PWREN;
+
 }
 
-
-void rtc_init(void) {
-
-    // 1. Start LSI oscillator
-    RCC->CSR2 |= LSI_ON;
-    while (!(RCC->CSR2 & LSI_READY));
-
-    // 2. Enable RTC bus clock
-    RCC->APBENR1 |= RTC_BUS_EN;
-
-    // 3. Enable power controller and unlock backup domain
-    RCC->APBENR1 |= PWR_EN;
-    PWR->CR1 	  |= BACKUP_UNLOCK;
-
-    // 4. Select LSI as RTC clock source and enable RTC
-    RCC->CSR1 |= RTC_CLK_LSI;
-    RCC->CSR1 |= RTC_ON;
-
-    // 5. Unlock RTC registers (two magic keys, must be in this order)
-    RTC->WPR = 0xCA;
-    RTC->WPR = 0x53;
-
-    // 6. Enter init mode
-    RTC->ICSR |= RTC_INIT_MODE;
-    while (!(RTC->ICSR & RTC_INIT_READY));
-
-    // 7. Set prescaler: ~32000 / 128 / 250 = 1 Hz
-    RTC->PRER = (127U << 16) | 249U;
-
-    // 8. Exit init mode and re-lock
-    RTC->ICSR &= ~RTC_INIT_MODE;
-    RTC->WPR = 0xFF;
-}
 
 

@@ -10,7 +10,10 @@
 
 void rtc_init1 (void);
 void alarm_a_init (void);
-void rtc_alarm_flag (void);
+void alarm_a_on (void);
+void rtc_exti_init(void);
+void stop_mode_enter(void);
+
 
 
 

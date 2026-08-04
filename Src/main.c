@@ -12,7 +12,6 @@ int main () {
 //Clock
 	sys_clk_48MHz ();
 	peripheral_clk_init ();
-	rtc_init();
 
 // Timers
 	timer_init ();
@@ -30,14 +29,14 @@ int main () {
 	uart2_send_string("Temp_station up\r\n");
 
 // Rtc
-	 rtc_init1 ();
-	 alarm_a_init();
-
+	rtc_init1();
+	alarm_a_init();
+	rtc_exti_init();
 
 while (1){
 
-	rtc_alarm_flag();
-	GPIOA->ODR ^= (1<<5); // toggle led
+		stop_mode_enter();
+	    GPIOA->ODR ^= (1U << 5);
 
 	}
 }
