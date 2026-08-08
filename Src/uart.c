@@ -6,10 +6,10 @@
 #define USART2_EN	   (1U << 17)	  // Enable usart2 clock (APBENR1)
 #define USART_EN	   (1 << 0)		  // USART enable
 #define TRANS_EN	   (1 << 3)       // Transmitter enable bit
-#define SYS_CLK		   48000000		  // 3MHz
+#define SYS_CLK		   48000000		  // 48MHz
 #define BAUD		   9600			  // Baud rate
 #define TXE		       (1 << 7)		  // TDR empty flag
-
+#define TRANS_COMPLETE (1 << 6)
 void uart_init(void){
 
 // UART clock enable
@@ -71,6 +71,7 @@ static void usart_send_string (USART_TypeDef *usart, const char *string) {
 
 		usart_send_byte(usart, *string);
 		string++;
+	while (!((USART1->ISR) & TRANS_COMPLETE ));
 	}
 }
 
@@ -101,6 +102,9 @@ static void usart_send_temp (USART_TypeDef *usart, int16_t raw)
     usart_send_byte(usart, '.');
     usart_send_byte(usart, (frac * 10 / 16) + '0');
     usart_send_string(usart, "\r\n");
+
+	while (!((USART1->ISR) & TRANS_COMPLETE ));
+
 }
 
 // ---------------- USART1 (PA9, HC-12) ----------------
@@ -108,11 +112,15 @@ static void usart_send_temp (USART_TypeDef *usart, int16_t raw)
 void uart_send_byte( uint8_t byte){
 
 	usart_send_byte(USART1, byte);
+	while (!((USART1->ISR) & TRANS_COMPLETE ));
+
 }
 
 void uart_send_string (const char *string) {
 
 	usart_send_string(USART1, string);
+	while (!((USART1->ISR) & TRANS_COMPLETE ));
+
 }
 
 void uart_send_temp(int16_t raw)

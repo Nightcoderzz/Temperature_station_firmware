@@ -1,4 +1,6 @@
 #include "stm32c0xx.h"
+#include "clock.h"
+
 
 #define LSI_ON			  (1 <<0)     // LSI on
 #define RTC_CLK_ENABLE	  (1 << 10)	  // APB1 bus clock
@@ -27,7 +29,7 @@ void rtc_init1 (void){
 	RTC->WPR = 0x53;
 
 	RTC->ICSR |= (RTC_INIT_MODE);
-	while (!((RTC->ICSR) & (1 << 6)));
+	while (!((RTC->ICSR) & (1 << 6))); // Calendar registers update is allowed
 
 	RTC->PRER  = 0x007F0000; // 127 +1
 	RTC->PRER |= (249U << 0); // 249 +1
@@ -80,6 +82,7 @@ void stop_mode_enter(void)
     __SEV();
     __WFE();
     __WFE();                               /* <<< stops here for ~60 s */
+
 
     /* ---------- woken ---------- */
 

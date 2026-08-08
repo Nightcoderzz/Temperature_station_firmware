@@ -1,6 +1,6 @@
 ../Inc/timers.h:10:20:delay_us	24	static
 ../Inc/timers.h:16:20:delay_ms	16	static
 ../Src/adc.c:19:6:adc_init	8	static
-../Src/adc.c:67:9:adc_read	24	static
-../Src/adc.c:81:9:batt_voltage_read	16	static
-../Src/adc.c:107:9:ldr_read	16	static
+../Src/adc.c:67:10:adc_read	24	static
+../Src/adc.c:81:9:batt_voltage_read	24	static
+../Src/adc.c:107:9:ldr_read	24	static
